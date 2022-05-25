@@ -83,6 +83,7 @@ const Locker = ({ handleLogin }) => {
           0
         </button>
       </div>
+      <p style={{ fontSize: "0.7em" }}>HINT: NEPO ELOSNOC</p>
     </div>
   );
 };
