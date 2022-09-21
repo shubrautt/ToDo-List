@@ -1,12 +1,12 @@
 import { useState } from "react";
 const Locker = ({ handleLogin }) => {
-  const password = "1234";
+  const password = "3678";
   const iconName = "fa-circle";
   let [enterpassword, setEnterpassword] = useState("");
   let [dots, setdots] = useState(["far", "far", "far", "far"]);
 
   console.log("😎😎😎😎😎😎");
-  console.log("PassWord: Ek Do Teen Char");
+  console.log("PassWord: Tin 6 sat 8");
   console.log("😎😎😎😎😎😎");
 
   const handlePassword = (e) => {
