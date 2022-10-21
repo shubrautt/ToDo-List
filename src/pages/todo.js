@@ -21,6 +21,9 @@ const Todo = () => {
     }
   };
 
+  //set change and submit
+  const setOnEnter = () => {};
+
   const handleDelete = (i) => {
     var currentData = JSON.parse(localStorage.getItem("todos"));
 
@@ -55,6 +58,11 @@ const Todo = () => {
           value={newdata}
           onChange={(e) => {
             setNewdata(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handle();
+            }
           }}
         />
         <button className="addBtn" onClick={handle}>
