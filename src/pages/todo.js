@@ -47,7 +47,6 @@ const Todo = () => {
 
   // load older data from localstorage
   useEffect(() => {
-    localStorage.clear();
     if (localStorage.getItem("todos") !== null) {
       setData(JSON.parse(localStorage.getItem("todos")));
     }
