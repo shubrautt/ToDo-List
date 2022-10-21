@@ -7,14 +7,12 @@ const Todo = () => {
 
   // handle for new data
   const handle = () => {
-    var tempAddData = data;
     if (newdata === "") {
-      alert("Noting to Add");
+      alert("Nothing to Add");
     } else {
       var tempdata = { todoData: newdata, done: "false" };
-      tempAddData.push(tempdata);
 
-      setData(tempAddData);
+      setData(prevState => [...prevState, tempdata]);
 
       localStorage.setItem("todos", JSON.stringify(data));
       setNewdata("");
@@ -25,6 +23,7 @@ const Todo = () => {
   const setOnEnter = () => {};
 
   const handleDelete = (i) => {
+    console.log("delete")
     var currentData = JSON.parse(localStorage.getItem("todos"));
 
     var newdata = currentData.filter((val, index, arr) => {
@@ -36,6 +35,7 @@ const Todo = () => {
   };
 
   const handleDone = (i) => {
+    
     var currentData = JSON.parse(localStorage.getItem("todos"));
     currentData[i].done = true;
     localStorage.setItem("todos", JSON.stringify(currentData));
