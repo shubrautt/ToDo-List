@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import TodoList from "./todolist";
+const { v4: uuidv4 } = require('uuid');
 
 const Todo = () => {
   const [data, setData] = useState([]);
@@ -10,11 +11,11 @@ const Todo = () => {
     if (newdata === "") {
       alert("Nothing to Add");
     } else {
-      var tempdata = { todoData: newdata, done: "false" };
+      var tempdata = { todoData: newdata, done: "false", id: uuidv4()};
 
+      localStorage.setItem("todos", JSON.stringify([...data, tempdata]));
       setData(prevState => [...prevState, tempdata]);
 
-      localStorage.setItem("todos", JSON.stringify(data));
       setNewdata("");
     }
   };
@@ -22,28 +23,31 @@ const Todo = () => {
   //set change and submit
   const setOnEnter = () => {};
 
-  const handleDelete = (i) => {
-    console.log("delete")
+  const handleDelete = (id) => {
     var currentData = JSON.parse(localStorage.getItem("todos"));
 
-    var newdata = currentData.filter((val, index, arr) => {
-      return index !== i;
+    var newdata = currentData.filter((val) => {
+      return val.id !== id;
     });
 
+
     localStorage.setItem("todos", JSON.stringify(newdata));
-    setData(JSON.parse(localStorage.getItem("todos")));
+    setData(newdata);
   };
 
-  const handleDone = (i) => {
-    
+  const handleDone = (id) => {
     var currentData = JSON.parse(localStorage.getItem("todos"));
-    currentData[i].done = true;
+
+    const todo = currentData.find(todo => todo.id === id);
+    todo.done = true;
+
     localStorage.setItem("todos", JSON.stringify(currentData));
-    setData(JSON.parse(localStorage.getItem("todos")));
+    setData(currentData);
   };
 
   // load older data from localstorage
   useEffect(() => {
+    localStorage.clear();
     if (localStorage.getItem("todos") !== null) {
       setData(JSON.parse(localStorage.getItem("todos")));
     }
