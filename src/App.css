@@ -124,6 +124,7 @@ input {
 }
 .delBtn {
   background: #ff3e3e;
+  opacity: 0.75;
   color: rgb(224, 224, 224);
   margin-top: 20px;
 }
@@ -150,6 +151,8 @@ input {
 }
 .lineThrough {
   text-decoration: line-through;
+  font-style: italic;
+  color: gray;
 }
 .Card {
   max-height: 150px;
