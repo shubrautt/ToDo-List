@@ -108,7 +108,9 @@ input {
 }
 .addBtn,
 .delBtn,
-.doneBtn {
+.doneBtn,
+.dropdownBtn,
+.dropdownOption {
   width: 90px;
   height: 40px;
   border: none;
@@ -116,6 +118,18 @@ input {
   cursor: pointer;
   border-radius: 5px;
   font-size: 0.9em;
+}
+.dropdownBtn {
+  text-align: center;
+  background-color: rgba(16, 18, 27, 0);
+}
+.dropdownOption {
+  font-size: 1.2em;
+  background-color: rgba(16, 18, 27, 0);
+}
+.dropdownList {
+  display: flex;
+  flex-direction: column;
 }
 .addBtn {
   background-color: rgba(16, 18, 27, 0);
@@ -165,6 +179,10 @@ input {
 .Card p {
   margin-top: 10px;
 }
+.cardDiv {
+  display:flex;
+  justify-content:space-between;
+}
 
 /* Responsive */
 @media (max-width: 1150px) {
@@ -186,7 +204,7 @@ input {
 }
 @media (max-width: 500px) {
   .container .inputBox {
-    width: 100%;
+    width: 100px;
     display: flex;
     flex-direction: column;
     padding: 0 10px;

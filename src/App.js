@@ -13,7 +13,6 @@ function App() {
   const [login, setLogin] = useState(false);
 
   const handleLogin = (e) => {
-    console.log(e);
     setLogin(e);
   }
 

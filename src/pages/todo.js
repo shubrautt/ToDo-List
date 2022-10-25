@@ -1,17 +1,23 @@
 import { useState, useEffect } from "react";
+import CategoryDropdown from "../components/dropdown";
 import TodoList from "./todolist";
+
+
 const { v4: uuidv4 } = require('uuid');
 
 const Todo = () => {
   const [data, setData] = useState([]);
   const [newdata, setNewdata] = useState("");
+  const [category, setCategory] = useState("Category");
 
   // handle for new data
   const handle = () => {
     if (newdata === "") {
       alert("Nothing to Add");
+    } else if(category === "Category") {
+      alert("Category not chosen");
     } else {
-      var tempdata = { todoData: newdata, done: "false", id: uuidv4()};
+      var tempdata = { todoData: newdata, done: "false", id: uuidv4(), category: category};
 
       localStorage.setItem("todos", JSON.stringify([...data, tempdata]));
       setData(prevState => [...prevState, tempdata]);
@@ -68,9 +74,11 @@ const Todo = () => {
             }
           }}
         />
+        <CategoryDropdown category={category} setCategory={setCategory} />
         <button className="addBtn" onClick={handle}>
           Add
         </button>
+        
       </div>
       <div className="todos">
         {data.length === 0 ? (
