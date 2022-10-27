@@ -7,7 +7,7 @@ const TodoList = ({ data, handleDelete, handleDone }) => {
     return (
         <div className="todoList">
             {cardData.map((todo) => {
-                return <Card data={data} id={todo.id} todoData={todo.todoData} done={todo.done} key={todo.id} handleDelete={handleDelete} handleDone={handleDone} />
+                return <Card data={data} id={todo.id} todoData={todo.todoData} category={todo.category} done={todo.done} key={todo.id} handleDelete={handleDelete} handleDone={handleDone} />
             })}
         </div>
     );
